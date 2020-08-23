@@ -52,11 +52,17 @@ public class Scheduler extends Thread {
      * 系统模拟的仿真时间
      */
     private static double SimulatedTime = 0.0;
-
-
+    /**
+     * 事件调度队列
+     */
     private static SimulationProcessQueue ReadyQueue = new SimulationProcessQueue();
-
+    /**
+     * 互斥锁
+     */
     static Scheduler theScheduler = new Scheduler();
+
+    private Scheduler() {
+    }
 
     /**
      * Get the current simulation time.
@@ -81,7 +87,6 @@ public class Scheduler extends Thread {
      * 然后，在对进程调用Cancel之前，它应该执行任何必要的工作，将进程恢复到可以重新启动模拟的状态。
      * @throws SimulationException if an error occurs.
      */
-
     static synchronized void reset() throws SimulationException {
         boolean finished = false;
         SimulationProcess tmp = SimulationProcess.current();
@@ -144,9 +149,6 @@ public class Scheduler extends Thread {
 
         SimulationProcess.Current = null;
         SimulationProcess.allProcesses = new SimulationProcessQueue();
-    }
-
-    private Scheduler() {
     }
 
     /**
