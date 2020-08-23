@@ -24,6 +24,7 @@ import java.util.NoSuchElementException;
 
 import org.javasim.SimulationProcess;
 
+@Deprecated
 public class SimulationProcessList {
     public SimulationProcessList() {
         Head = null;

@@ -1,5 +1,6 @@
 package org.javasim.internal;
 
+import org.javasim.Simulation;
 import org.javasim.SimulationProcess;
 
 import java.util.*;
@@ -15,7 +16,6 @@ public class SimulationProcessQueue {
      * 仿真事件队列
      */
     private List<SimulationProcess> queue = new LinkedList<>();
-
     /**
      * 互斥锁对象
      */
@@ -123,6 +123,19 @@ public class SimulationProcessQueue {
                 throw new NoSuchElementException();
             }
             return queue.remove(0);
+        }
+    }
+
+    /**
+     * 查看队首线程
+     * @return 队首线程
+     */
+    public SimulationProcess peek() {
+        synchronized (mutex) {
+            if (queue.size() == 0) {
+                return null;
+            }
+            return queue.get(0);
         }
     }
 

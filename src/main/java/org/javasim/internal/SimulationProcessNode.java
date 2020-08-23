@@ -7,6 +7,7 @@ import org.javasim.SimulationProcess;
  * @author: zhanyeye
  * @create: 2020-08-18 12:29
  **/
+@Deprecated
 class SimulationProcessNode {
 
     /**

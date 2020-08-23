@@ -22,6 +22,7 @@ package org.javasim.internal;
 
 import org.javasim.SimulationProcess;
 
+@Deprecated
 public class SimulationProcessIterator {
 
     /**
